@@ -1,0 +1,149 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+h1, h2, h2{
+    margin: 0;
+    padding 0;
+}
+p{
+    margin: 0px;
+    padding: 0px
+}
+
+.portofolio {
+  width: 100%;
+}
+nav {
+  background: #1a0b2e;
+  font-size: 20px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: semibold;
+  
+  /* border: 1px solid red; */
+}
+
+.menu {
+  justify-content: space-between;
+  margin: auto;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  padding: 28px 0px 28px 0px;
+  /* border: 1px solid yellow; */
+}
+.menu p {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  /* border: 1px solid white; */
+}
+.menu-nav {
+  display: flex;
+  /* border: 1px solid white; */
+}
+.menu-nav a {
+  display: flex;
+  margin-left: 100px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* content */
+.background {
+  background: #11071f;
+  border: 1px solid #11071f;
+  color: #ffffff;
+}
+.home {
+  margin: auto;
+  width: 60%;
+}
+.profil {
+  display: flex;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  /* border: 1px solid white; */
+}
+.gradient {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/img/Gradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 260px;
+  heigth: 150px;
+  padding: 50px;
+  /* background-image: radial-gradient(circle, #763cac 2%, #320f85 5%, #11071f 100%); */
+}
+.elips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  heigth: 211px;
+  background-image: url("/img/Ellips.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* border: 1px solid white; */
+}
+.elips img {
+  width: 200px;
+  border-radius: 50%;
+}
+span {
+  color: #7127ba;
+}
+.nama {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    heigth: 200px
+    /* border: 1px solid white; */
+}
+.desc-profil {
+  /* border: 1px solid red; */
+}
+.desc-profil .cover{
+    border: 1px solid #7127ba;
+    padding: 5px 15px 5px 15px;
+    border-radius: 50%; 
+}
+.desc-profil h2{
+    font-size: 50px;
+}
+.desc-profil .desc-profil-p{
+    padding-top: 15px
+}
+
+.description p{
+    font-size: 22px
+}
+
+.desc-kerja{
+    margin-bottom: 50px;
+}
+.desc-kerja h2{
+font-size: 50px;
+font-weight: 200;
+}
+.desc-kerja p{
+    font-size: 21px;
+}
+span.facebook{
+    color: #1877F2;
+}
+
+/* work */
+.word{
+  margin: auto;
+  width: 60%;
+  margin-top: 50px;
+}
+.word h2{
+  font-size: 50px;
+font-weight: 200;
+}
