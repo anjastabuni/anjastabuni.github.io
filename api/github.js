@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function fetchGitHubRepos() {
     try {
-      const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`, {
-        headers: token ? { Authorization: `token ${token}` } : {},
-      });
+      const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
 
       if (!response.ok) {
         throw new Error(`GitHub API Error: ${response.status}`);
