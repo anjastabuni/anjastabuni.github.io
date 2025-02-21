@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .slice(0, 6) // Menampilkan 6 repo terbaru
         .map(
           (repo) => `
-      <div class="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-5 transition duration-300 transform hover:scale-105 hover:shadow-xl" data-aos="fade-up">
+      <div class="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-5 transition duration-300 transform hover:scale-105 hover:shadow-xl marquee-item " data-aos="fade-up">
         <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">${repo.name}</h3>
         <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
           ${repo.description || "Tidak ada deskripsi."}
