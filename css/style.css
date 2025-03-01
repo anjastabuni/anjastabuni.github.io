@@ -12,7 +12,7 @@ body {
 .icon-bg {
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
+  padding: 0.1rem;
   border-radius: 8px;
 }
 body.blur-effect {
@@ -48,7 +48,7 @@ body.blur-effect {
 }
 
 /* Style dasar ikon */
-.skill-cluster img {
+.skill-cluster svg {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -61,67 +61,67 @@ body.blur-effect {
 }
 
 /* Efek hover untuk ikon */
-.skill-cluster img:hover {
+.skill-cluster svg:hover {
   transform: scale(1.1);
 }
 
 /* Posisi ikon untuk tampilan desktop (Cluster) */
-.skill-cluster img:nth-child(1) {
+.skill-cluster svg:nth-child(1) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(2) {
+.skill-cluster svg:nth-child(2) {
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(3) {
+.skill-cluster svg:nth-child(3) {
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(4) {
+.skill-cluster svg:nth-child(4) {
   top: 50%;
   left: 20%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(5) {
+.skill-cluster svg:nth-child(5) {
   top: 50%;
   left: 80%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(6) {
+.skill-cluster svg:nth-child(6) {
   top: 30%;
   left: 30%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(7) {
+.skill-cluster svg:nth-child(7) {
   top: 70%;
   left: 30%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(8) {
+.skill-cluster svg:nth-child(8) {
   top: 30%;
   left: 70%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(9) {
+.skill-cluster svg:nth-child(9) {
   top: 70%;
   left: 70%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(10) {
+.skill-cluster svg:nth-child(10) {
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(11) {
+.skill-cluster svg:nth-child(11) {
   top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.skill-cluster img:nth-child(12) {
+.skill-cluster svg:nth-child(12) {
   top: 50%;
   left: 90%;
   transform: translate(-50%, -50%);
@@ -139,7 +139,7 @@ body.blur-effect {
     padding: 30px; /* Tambah padding */
   }
 
-  .skill-cluster img {
+  .skill-cluster svg {
     position: static;
     transform: none;
     width: 70px;
@@ -156,7 +156,7 @@ body.blur-effect {
     padding: 20px;
   }
 
-  .skill-cluster img {
+  .skill-cluster svg {
     width: 60px;
     height: 60px;
     padding: 6px;
@@ -171,7 +171,7 @@ body.blur-effect {
     padding: 15px;
   }
 
-  .skill-cluster img {
+  .skill-cluster svg {
     width: 50px;
     height: 50px;
     padding: 5px;
