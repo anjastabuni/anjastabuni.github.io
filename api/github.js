@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const repos = await response.json();
 
       reposContainer.innerHTML = repos
-        .slice(0, 6) // Menampilkan 6 repo terbaru
+        .slice(0, 3) // Menampilkan 6 repo terbaru
         .map(
           (repo) => `
       <div class="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-5 transition duration-300 transform hover:scale-105 hover:shadow-xl marquee-item " data-aos="fade-up">
