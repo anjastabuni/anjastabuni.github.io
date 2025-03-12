@@ -10,3 +10,4 @@ var typed = new Typed("#typed", {
   showCursor: true, // Menampilkan kursor mengetik
   cursorChar: "|", // Karakter kursor
 });
+
