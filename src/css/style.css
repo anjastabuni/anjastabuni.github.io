@@ -1,0 +1,184 @@
+html {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+.icon-bg {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.1rem;
+  border-radius: 8px;
+}
+body.blur-effect {
+  filter: blur(10px);
+  transition: filter 1.5s ease-out;
+}
+.h2 {
+  font-weight: 700;
+  color: #f8fafc; /* Warna lebih soft */
+}
+.span {
+  color: #3b82f6; /* Biru lebih nyaman */
+}
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(59, 130, 246, 0.5);
+}
+
+/* SKILL CLUSTER */
+.skill-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  padding: 20px; /* Tambahkan padding untuk ruang ekstra */
+  gap: 15px; /* Jarak antar ikon */
+}
+
+/* Style dasar ikon */
+.skill-cluster svg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: #fff;
+  padding: 10px; /* Tambah padding agar lebih rapi */
+  position: absolute;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambah shadow agar lebih modern */
+  transition: transform 0.3s ease-in-out; /* Efek hover */
+}
+
+/* Efek hover untuk ikon */
+.skill-cluster svg:hover {
+  transform: scale(1.1);
+}
+
+/* Posisi ikon untuk tampilan desktop (Cluster) */
+.skill-cluster svg:nth-child(1) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(2) {
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(3) {
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(4) {
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(5) {
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(6) {
+  top: 30%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(7) {
+  top: 70%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(8) {
+  top: 30%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(9) {
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(10) {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(11) {
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.skill-cluster svg:nth-child(12) {
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+
+/* TABLET (≤ 768px) */
+@media (max-width: 768px) {
+  .skill-cluster {
+    display: none;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    gap: 20px; /* Lebih lebar */
+    width: auto;
+    height: auto;
+    position: static;
+    padding: 30px; /* Tambah padding */
+  }
+
+  .skill-cluster svg {
+    position: static;
+    transform: none;
+    width: 70px;
+    height: 70px;
+    padding: 8px;
+  }
+}
+
+/* MOBILE (≤ 480px) */
+@media (max-width: 480px) {
+  .skill-cluster {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .skill-cluster svg {
+    width: 60px;
+    height: 60px;
+    padding: 6px;
+  }
+}
+
+/* MOBILE KECIL (≤ 340px) */
+@media (max-width: 340px) {
+  .skill-cluster {
+    grid-template-columns: 1fr; /* 1 kolom */
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .skill-cluster svg {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+  }
+}

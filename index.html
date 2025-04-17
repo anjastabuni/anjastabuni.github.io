@@ -1,5 +1,22 @@
 <!DOCTYPE html>
-<html lang="id">
+<html
+  lang="id"
+  x-data="{ darkMode: localStorage.getItem('thema') === 'dark', scrolled: false }"
+  x-init="
+    $watch('darkMode', value => {
+      localStorage.setItem('thema', value ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', value);
+    });
+
+    window.addEventListener('scroll', () => {
+      scrolled = window.scrollY > 10;
+    });
+
+    // Inisialisasi class dark saat pertama kali load
+    if (darkMode) document.documentElement.classList.add('dark');
+  "
+  :class="{ 'dark': darkMode }"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +28,7 @@
 
     <!-- Tailwind CSS -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link rel="stylesheet" href="src/output.css" />
+    <link rel="stylesheet" href="src/css/output.css" />
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/355acdeb36.js" crossorigin="anonymous"></script>
@@ -26,45 +43,72 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <!-- alpine js -->
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script> -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="src/css/style.css" />
   </head>
 
-  <body class="bg-gray-900 text-gray-100 font-sans relative">
+  <body class="bg-gray-900 text-gray-100 relative dark:bg-white dark:text-gray-900">
     <!-- Particles.js -->
     <div id="particles-js"></div>
-    <div class="h-screen flex justify-center items-center flex-col">
+    <!-- Navbar start -->
+    <!-- Navbar -->
+    <nav
+      :class="scrolled 
+      ? 'bg-white dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900 dark:text-white' 
+      : 'bg-transparent text-white dark:text-gray-300'"
+      class="fixed top-0 left-0 w-full flex items-center justify-between lg:justify-around px-6 py-4 transition-all duration-300 z-50"
+    >
+      <div class="lg:text-md lg:font-semibold"><a href="index.html">RMT.DEV</a></div>
+
+      <div class="flex items-center space-x-6">
+        <a href="proyek.html" class="hover:text-blue-400 transition text-sm lg:text-xl">Proyek</a>
+        <a href="repository.html" class="hover:text-blue-400 transition text-sm lg:text-xl">Repository</a>
+
+        <!-- Toggle Dark Mode -->
+        <button @click="darkMode = !darkMode" class="w-9 h-9 flex items-center justify-center bg-gray-300 rounded-full transition">
+          <img :src="darkMode ? 'src/img/moon.png' : 'src/img/sun.png'" :alt="darkMode ? 'Dark Mode' : 'Light Mode'" class="w-6 h-6" />
+        </button>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+    <div class="h-screen flex justify-center items-center flex-col px-2 mt-10 lg:mt-0">
       <div class="text-center" data-aos="fade-right" data-aos-duration="1800">
         <!-- Foto Profil -->
         <div class="rounded-full overflow-hidden w-48 h-48 border-4 border-blue-400 shadow-xl mx-auto">
-          <img src="img/profil.png" alt="Rebly Megib Tabuni" class="w-full h-full object-cover" />
+          <img src="src/img/profil.png" alt="Rebly Megib Tabuni" class="w-full h-full object-cover" />
         </div>
 
-        <h2 class="text-4xl font-bold mt-6">Hallo! Saya <span class="h2">Rebly Megib Tabuni</span></h2>
-        <p class="text-gray-300 mt-3 leading-relaxed max-w-xl text-lg">Seorang <span class="span font-medium" id="typed"></span></p>
-        <p class="text-gray-300 mt-2 max-w-xl text-lg">Bagi saya, teknologi bukan hanya soal kode, tapi bagaimana menciptakan solusi yang benar-benar membantu.</p>
+        <h2 class="text-2xl font-semibold lg:text-4xl lg:font-bold mt-6">Hallo! Saya <span class="h2">Rebly Megib Tabuni</span></h2>
+        <p class="text-gray-300 mt-3 leading-relaxed max-w-xl text-md lg:text-lg">Seorang <span class="span font-medium" id="typed"></span></p>
+        <p class="text-gray-300 mt-2 max-w-xl text-md lg:text-lg">Bagi saya, teknologi bukan hanya soal kode, tapi bagaimana menciptakan solusi yang benar-benar membantu.</p>
       </div>
       <!-- Scroll Down Icon -->
-      <a href="#about" class="mt-10 animate-bounce text-blue-400 text-4xl">
-        <i class="fas fa-chevron-down"></i>
+      <a href="#about" class="mt-20 animate-bounce text-blue-400 text-4xl">
+        <img src="src/img/mouse.png" class="w-10 h-10" alt="" />
       </a>
     </div>
 
     <!-- Skill & Tentang Saya Section -->
-    <div class="container mx-auto px-6 py-20" id="about">
+    <div class="container mx-auto px-6 py-20 lg:px-0" id="about">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
         <!-- Tentang Saya -->
         <div class="text-center md:text-left order-1 md:order-2">
-          <h2 class="text-4xl font-bold text-gray-100">Tentang Saya</h2>
-          <p class="text-gray-300 mt-2 max-w-xl text-lg">
-            Awalnya saya tidak tau dunia IT, hanya karena kebetulan memilih jurusan <span class="span">Teknik Informatika</span> dan belajar berbagai hal di dunia IT, sehingga bisa berkarir di berbagai profesi seperti
-            <i> Computer Hardware, Network and System Engineering, Software Development, Database Administrator, IT Consultant, </i> dan <i>System Analyst</i>.
-          </p>
-          <p class="text-gray-300 mt-4 max-w-xl text-lg leading-relaxed">Saya membuat Website Portfolio ini hanya untuk memperlihatkan project yang sudah saya buat dan yang sedang saya kerjakan.</p>
+          <h2 class="text-2xl font-semibold lg:text-4xl lg:font-bold text-gray-100">Tentang Saya</h2>
 
-          <a href="#projects" class="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg mt-6 text-lg font-semibold hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105">
+          <p class="text-gray-300 mt-4 max-w-xl text-md lg:text-lg leading-relaxed">
+            Saat ini, saya bekerja sebagai <span class="font-semibold">freelancer Web Developer</span> yang berfokus pada pengembangan aplikasi dan website modern. Saya senang membangun solusi digital yang fungsional dan efisien, serta
+            terus belajar untuk mengikuti perkembangan teknologi.
+          </p>
+          <p class="text-gray-300 mt-4 max-w-xl text-md lg:text-lg leading-relaxed">
+            Website portofolio ini saya buat sebagai ruang untuk menampilkan berbagai proyek yang sudah saya selesaikan maupun yang sedang saya kerjakan. Ini bukan hanya etalase karya, tapi juga cerminan perjalanan dan proses belajar saya
+            dalam dunia teknologi.
+          </p>
+          <a
+            href="#projects"
+            class="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-full lg:rounded-lg mt-6 text-md lg:text-lg font-semibold hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105"
+          >
             Proyek
 
             <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -208,20 +252,20 @@
     </div>
 
     <!-- Proyek Section -->
-    <div id="projects" class="text-center py-20">
-      <h2 class="text-3xl font-bold text-gray-100">Apa yang saya buat?</h2>
-      <p class="text-gray-400 mt-3">Berikut beberapa proyek yang telah saya kerjakan.</p>
+    <div id="projects" class="text-center py-20 px-2 lg:px-0">
+      <h2 class="text-2xl font-semibold lg:text-3xl lg:font-bold text-gray-100">Apa yang saya buat?</h2>
+      <p class="text-gray-400 text-md lg:text-lg mt-3">Berikut beberapa proyek yang telah saya kerjakan.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-10 justify-center hover:shadow-blue-500/50 transition-all duration-300">
         <!-- proyek 1 -->
-        <div class="bg-gray-800 p-6 rounded-xl shadow-xl project-card relative flex flex-col items-center" data-aos="fade-up">
-          <a data-fslightbox="gallery" href="img/proyek1/Cover-1.jpg">
-            <img src="img/proyek1/Cover-1.jpg" alt="Sistem Pendataan Proposal" class="w-full h-45 object-cover rounded-xl cursor-pointer transition duration-300 hover:scale-105" />
+        <div class="bg-gray-800 p-4 lg:p-6 rounded-xl shadow-xl project-card relative flex flex-col items-center" data-aos="fade-up">
+          <a data-fslightbox="gallery" href="src/img/proyek1/Cover-1.jpg">
+            <img src="src/img/proyek1/Cover-1.jpg" alt="Sistem Pendataan Proposal" class="w-sm xl:w-full object-cover rounded-xl cursor-pointer transition duration-300 hover:scale-105" />
           </a>
           <div class="text-center mt-4">
-            <h3 class="text-xl text-blue-400 font-semibold">Sistem Pendataan Proposal</h3>
-            <p class="text-gray-300 mt-2">Membangun sistem informasi untuk mendata dan mengelola proposal mahasiswa dalam program studi, memudahkan proses validasi dan pencatatan secara digital.</p>
-            <div class="icon-bg absolute top-4 right-4 flex space-x-3">
+            <h3 class="text-md lg:text-xl text-blue-400 font-semibold">Sistem Pendataan Proposal</h3>
+            <p class="text-gray-300 mt-2 text-sm lg:text-lg">Membangun sistem informasi untuk mendata dan mengelola proposal mahasiswa dalam program studi, memudahkan proses validasi dan pencatatan secara digital.</p>
+            <div class="absolute top-4 right-4 flex space-x-3">
               <a href="https://github.com/anjastabuni/project-kp" class="text-gray-700 text-2xl hover:text-gray-200">
                 <i class="fab fa-github"></i>
               </a>
@@ -269,19 +313,19 @@
         <!-- proyek 1 end-->
         <!-- proyek 2 -->
         <div class="bg-gray-800 p-6 rounded-xl shadow-xl project-card relative flex flex-col items-center hover:shadow-blue-500/50 transition-all duration-300" data-aos="fade-up">
-          <a data-fslightbox="gallery" href="img/proyek2/movie.png">
-            <img src="img/proyek2/movieapp.png" alt="Movie Search App" class="w-full h-45 object-cover rounded-xl cursor-pointer transition duration-300 hover:scale-105" />
+          <a data-fslightbox="gallery" href="src/img/proyek2/movie.png">
+            <img src="src/img/proyek2/movieapp.png" alt="Movie Search App" class="w-sm xl:w-full object-cover rounded-xl cursor-pointer transition duration-300 hover:scale-105" />
           </a>
-          <a data-fslightbox="gallery" href="img/proyek2/favorit.png">
-            <img src="img/proyek2/favorit.png" alt="Movie Search App" class="hidden" />
+          <a data-fslightbox="gallery" href="src/img/proyek2/favorit.png">
+            <img src="src/img/proyek2/favorit.png" alt="Movie Search App" class="hidden" />
           </a>
-          <a data-fslightbox="gallery" href="img/proyek2/detail.png">
-            <img src="img/proyek2/detail.png" alt="Movie Search App" class="hidden" />
+          <a data-fslightbox="gallery" href="src/img/proyek2/detail.png">
+            <img src="src/img/proyek2/detail.png" alt="Movie Search App" class="hidden" />
           </a>
           <div class="text-center mt-4">
-            <h3 class="text-xl text-blue-400 font-semibold">Movie Search App</h3>
-            <p class="text-gray-300 mt-2">Movie Search App memungkinkan pengguna mencari informasi tentang film menggunakan The Movie Database (TMDb) API.</p>
-            <div class="icon-bg absolute top-4 right-4 flex space-x-3">
+            <h3 class="text-md lg:text-xl text-blue-400 font-semibold">Movie Search App</h3>
+            <p class="text-gray-300 mt-2 text-sm lg:text-lg">Movie Search App memungkinkan pengguna mencari informasi tentang film menggunakan The Movie Database (TMDb) API.</p>
+            <div class="absolute top-4 right-4 flex space-x-3">
               <a href="https://github.com/anjastabuni/Movie-App" class="text-gray-700 text-2xl hover:text-gray-200">
                 <i class="fab fa-github"></i>
               </a>
@@ -347,16 +391,16 @@
         <!-- proyek 2 end-->
         <!-- proyek 3 -->
         <div class="bg-gray-800 p-6 rounded-xl shadow-xl project-card relative flex flex-col items-center hover:shadow-blue-500/50 transition-all duration-300" data-aos="fade-up">
-          <a data-fslightbox="gallery" href="img/proyek3/portfolio.jpg">
-            <img src="img/proyek3/portfolio.jpg" alt="Portfolio Rebly Megib Tabuni" class="w-full h-45 object-cover rounded-md cursor-pointer transition duration-300 hover:scale-105" />
+          <a data-fslightbox="gallery" href="src/img/proyek3/portfolio.jpg">
+            <img src="src/img/proyek3/portfolio.jpg" alt="Portfolio Rebly Megib Tabuni" class="w-sm xl:w-full object-cover rounded-md cursor-pointer transition duration-300 hover:scale-105" />
           </a>
-          <a data-fslightbox="gallery" href="img/proyek3/detail.png">
-            <img src="img/proyek3/detail.png" alt="Portfolio Rebly Megib Tabuni" class="w-full h-45 object-cover rounded-xl hidden" />
+          <a data-fslightbox="gallery" href="src/img/proyek3/detail.png">
+            <img src="src/img/proyek3/detail.png" alt="Portfolio Rebly Megib Tabuni" class="w-full h-45 object-cover rounded-xl hidden" />
           </a>
           <div class="text-center mt-4">
-            <h3 class="text-xl text-blue-400 font-semibold">Web Portfolio</h3>
-            <p class="text-gray-300 mt-2">Website portofolio interaktif dengan desain futuristik yang menampilkan pengalaman dan proyek yang telah saya kerjakan.</p>
-            <div class="icon-bg absolute top-4 right-4 flex space-x-3">
+            <h3 class="text-md lg:text-xl text-blue-400 font-semibold">Web Portfolio</h3>
+            <p class="text-gray-300 mt-2 text-sm lg:text-lg">Website portofolio interaktif dengan desain futuristik yang menampilkan pengalaman dan proyek yang telah saya kerjakan.</p>
+            <div class="absolute top-4 right-4 flex space-x-3">
               <a href="https://github.com/anjastabuni/sacode-e-commerse-ii-day11-anjas" class="text-gray-700 text-2xl hover:text-gray-200">
                 <i class="fab fa-github"></i>
               </a>
@@ -409,7 +453,7 @@
       <!-- github repo -->
     </div>
     <!-- api repo github -->
-    <div class="py-20 bg-gray-800">
+    <div class="py-20 px-2 lg:px-0 bg-gray-800">
       <h2 class="text-3xl font-bold text-gray-100 text-center">Apa yang sedang saya kerjakan?</h2>
       <p class="text-gray-400 mt-3 text-center">Berikut Informasi Repository Github terbaru saya.</p>
       <div id="github-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-10 justify-around"></div>
@@ -423,14 +467,14 @@
 
         <!-- Sosial Media -->
         <div class="flex justify-center space-x-4">
-          <a href="https://www.linkedin.com/in/reblytabuni22/" target="_blank" class="text-gray-400 text-2xl hover:text-blue-400 bg-gray-700 p-3 rounded-full shadow-lg transition-transform transform hover:scale-110">
-            <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/reblytabuni22/" target="_blank" class="text-gray-400 text-2xl hover:text-blue-400 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-linkedin text-lg lg:text-2xl"></i>
           </a>
-          <a href="https://www.instagram.com/lingge_gaya/" target="_blank" class="text-gray-400 text-2xl hover:text-pink-400 bg-gray-700 p-3 rounded-full shadow-lg transition-transform transform hover:scale-110">
-            <i class="fab fa-instagram"></i>
+          <a href="https://www.instagram.com/lingge_gaya/" target="_blank" class="text-gray-400 text-2xl hover:text-pink-400 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-instagram text-lg lg:text-2xl"></i>
           </a>
-          <a href="https://github.com/anjastabuni" target="_blank" class="text-gray-400 text-2xl hover:text-gray-300 bg-gray-700 p-3 rounded-full shadow-lg transition-transform transform hover:scale-110">
-            <i class="fab fa-github"></i>
+          <a href="https://github.com/anjastabuni" target="_blank" class="text-gray-400 text-2xl hover:text-gray-300 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-github text-lg lg:text-2xl"></i>
           </a>
         </div>
 
@@ -452,14 +496,14 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
     <!-- Particles.js Init -->
-    <script src="js/particles.js"></script>
+    <script src="src/js/particles.js"></script>
     <!-- script api/github -->
     <script src="api/github.js"></script>
     <!-- Typed.js -->
-    <script src="js/typed.js"></script>
+    <script src="src/js/typed.js"></script>
     <!-- Fslightbox.js -->
-    <script src="js/fslightbox.js"></script>
+    <script src="src/js/fslightbox.js"></script>
     <!-- Scoll to Top -->
-    <script src="js/scrollTop.js"></script>
+    <script src="src/js/scrollTop.js"></script>
   </body>
 </html>

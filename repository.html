@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html
+  lang="id"
+  x-data="{ darkMode: localStorage.getItem('thema') === 'dark', scrolled: false }"
+  x-init="
+    $watch('darkMode', value => {
+      localStorage.setItem('thema', value ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', value);
+    });
+
+    window.addEventListener('scroll', () => {
+      scrolled = window.scrollY > 10;
+    });
+
+    // Inisialisasi class dark saat pertama kali load
+    if (darkMode) document.documentElement.classList.add('dark');
+  "
+  :class="{ 'dark': darkMode }"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Rebly Megib Tabuni, seorang freelancer Full-Stack Developer dari Jayapura Papua" />
+    <title>Rebly Megib Tabuni</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="src/css/output.css" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/355acdeb36.js" crossorigin="anonymous"></script>
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+
+  <body class="bg-gray-900 text-gray-100 relative dark:bg-white dark:text-gray-900">
+    <!-- Particles.js -->
+    <div id="particles-js"></div>
+    <!-- Navbar start -->
+    <!-- Navbar -->
+    <nav
+      :class="scrolled 
+      ? 'bg-white dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900 dark:text-white' 
+      : 'bg-transparent text-white dark:text-gray-300'"
+      class="fixed top-0 left-0 w-full flex items-center justify-between lg:justify-around px-6 py-4 transition-all duration-300 z-50"
+    >
+      <div class="lg:text-md lg:font-semibold"><a href="index.html">RMT.DEV</a></div>
+
+      <div class="flex items-center space-x-6">
+        <a href="proyek.html" class="hover:text-blue-400 transition text-sm lg:text-xl">Proyek</a>
+        <a href="repository.html" class="hover:text-blue-400 transition text-sm lg:text-xl">Repository</a>
+
+        <!-- Toggle Dark Mode -->
+        <button @click="darkMode = !darkMode" class="w-9 h-9 flex items-center justify-center bg-gray-300 rounded-full transition">
+          <img :src="darkMode ? 'src/img/moon.png' : 'src/img/sun.png'" :alt="darkMode ? 'Dark Mode' : 'Light Mode'" class="w-6 h-6" />
+        </button>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- api repo github -->
+    <div class="w-svw flex relative flex-col justify-center items-center py-20 px-2 lg:px-0 bg-gray-800">
+      <h2 class="text-3xl font-bold text-gray-100 text-center">Apa yang sedang saya kerjakan?</h2>
+      <p class="text-gray-400 mt-3 text-center">Berikut Informasi Repository Github terbaru saya.</p>
+      <div id="github-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-10 justify-around"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+        <!-- Copyright -->
+        <div class="text-center md:text-left">&copy;<span id="year"></span> Dibuat oleh Rebly Megib Tabuni</div>
+
+        <!-- Sosial Media -->
+        <div class="flex justify-center space-x-4">
+          <a href="https://www.linkedin.com/in/reblytabuni22/" target="_blank" class="text-gray-400 text-2xl hover:text-blue-400 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-linkedin text-lg lg:text-2xl"></i>
+          </a>
+          <a href="https://www.instagram.com/lingge_gaya/" target="_blank" class="text-gray-400 text-2xl hover:text-pink-400 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-instagram text-lg lg:text-2xl"></i>
+          </a>
+          <a href="https://github.com/anjastabuni" target="_blank" class="text-gray-400 text-2xl hover:text-gray-300 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-github text-lg lg:text-2xl"></i>
+          </a>
+        </div>
+
+        <!-- Scroll to Top -->
+        <button id="scrollTop" class="fixed bottom-5 right-5 bg-blue-500 text-white p-3 rounded-full shadow-md transition transform hover:scale-110 hover:bg-blue-600 opacity-0 invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+
+      // year footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- script api/github -->
+    <script src="api/allrepo.js"></script>
+
+    <!-- Fslightbox.js -->
+    <script src="src/js/fslightbox.js"></script>
+    <!-- Scoll to Top -->
+    <script src="src/js/scrollTop.js"></script>
+  </body>
+</html>

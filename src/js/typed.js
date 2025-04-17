@@ -1,5 +1,5 @@
 var typed = new Typed("#typed", {
-  strings: ["Fullstack Developer", "MERN | Laravel Enthusiast", "Freelancer"],
+  strings: ["Fullstack Developer", "Javascript and PHP Enthusiast", "Freelancer"],
   typeSpeed: 80, // Kecepatan mengetik (lebih smooth)
   backSpeed: 50, // Kecepatan menghapus teks
   startDelay: 500, // Delay sebelum mulai mengetik pertama kali
@@ -10,4 +10,3 @@ var typed = new Typed("#typed", {
   showCursor: true, // Menampilkan kursor mengetik
   cursorChar: "|", // Karakter kursor
 });
-

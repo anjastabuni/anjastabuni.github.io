@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html
+  lang="id"
+  x-data="{ darkMode: localStorage.getItem('thema') === 'dark', scrolled: false }"
+  x-init="
+    $watch('darkMode', value => {
+      localStorage.setItem('thema', value ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', value);
+    });
+
+    window.addEventListener('scroll', () => {
+      scrolled = window.scrollY > 10;
+    });
+
+    // Inisialisasi class dark saat pertama kali load
+    if (darkMode) document.documentElement.classList.add('dark');
+  "
+  :class="{ 'dark': darkMode }"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Rebly Megib Tabuni, seorang freelancer Full-Stack Developer dari Jayapura Papua" />
+    <title>Rebly Megib Tabuni</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="src/css/output.css" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/355acdeb36.js" crossorigin="anonymous"></script>
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+
+  <body class="bg-gray-900 text-gray-100 relative dark:bg-white dark:text-gray-900">
+    <!-- Particles.js -->
+    <div id="particles-js"></div>
+    <!-- Navbar start -->
+    <nav
+      :class="scrolled 
+      ? 'bg-white dark:bg-gray-900/70 backdrop-blur-md shadow-md text-gray-900 dark:text-white' 
+      : 'bg-transparent text-white dark:text-gray-300'"
+      class="fixed top-0 left-0 w-full flex items-center justify-between lg:justify-around px-6 py-4 transition-all duration-300 z-50"
+    >
+    <div class="lg:text-md lg:font-semibold"><a href="index.html">RMT.DEV</a></div>
+
+      <div class="flex items-center space-x-6">
+        <a href="proyek.html" class="hover:text-blue-400 transition text-sm lg:text-xl">Proyek</a>
+        <a href="repository.html" class="hover:text-blue-400 transition text-sm lg:text-xl">Repository</a>
+
+        <!-- Toggle Dark Mode -->
+        <button @click="darkMode = !darkMode" class="w-9 h-9 flex items-center justify-center bg-gray-300 rounded-full transition">
+          <img :src="darkMode ? 'src/img/moon.png' : 'src/img/sun.png'" :alt="darkMode ? 'Dark Mode' : 'Light Mode'" class="w-6 h-6" />
+        </button>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- Proyek Section -->
+    <div id="projects" class="h-screen  text-center py-20 px-2 mt-20 lg:px-0 ">
+      <h2 class="text-2xl font-semibold lg:text-3xl lg:font-bold text-gray-100">Apa yang saya buat?</h2>
+      <p class="text-gray-400 text-md lg:text-lg mt-3">Berikut beberapa proyek yang telah saya kerjakan.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 px-10  justify-center hover:shadow-blue-500/50 transition-all duration-300">
+        <!-- proyek 1 -->
+        <div class="bg-gray-800 p-4 lg:p-6 rounded-xl shadow-xl project-card relative flex flex-col items-center" data-aos="fade-up">
+          <a data-fslightbox="gallery" href="src/img/proyek1/Cover-1.jpg">
+            <img src="src/img/proyek1/Cover-1.jpg" alt="Sistem Pendataan Proposal" class="w-sm xl:w-full object-cover rounded-xl cursor-pointer transition duration-300 hover:scale-105" />
+          </a>
+          <div class="text-center mt-4">
+            <h3 class="text-md lg:text-xl text-blue-400 font-semibold">Sistem Pendataan Proposal</h3>
+            <p class="text-gray-300 mt-2 text-sm lg:text-lg">Membangun sistem informasi untuk mendata dan mengelola proposal mahasiswa dalam program studi, memudahkan proses validasi dan pencatatan secara digital.</p>
+            <div class="absolute top-4 right-4 flex space-x-3">
+              <a href="https://github.com/anjastabuni/project-kp" class="text-gray-700 text-2xl hover:text-gray-200">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-row mt-6 justify-center">
+              <!-- tailwind css -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <rect width="256" height="256" rx="60" />
+                  <path
+                    fill="url(#skillIconsTailwindcssLight0)"
+                    fill-rule="evenodd"
+                    d="M83 110q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5Q96.5 92 83 110m-45 54q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5q-18-4.502-31.5 13.5"
+                    clip-rule="evenodd"
+                  />
+                  <defs>
+                    <linearGradient id="skillIconsTailwindcssLight0" x1="86.5" x2="163.5" y1="74" y2="185.5" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#32b1c1" />
+                      <stop offset="1" stop-color="#14c6b7" />
+                    </linearGradient>
+                  </defs>
+                </g>
+              </svg>
+              <!-- alpine js -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <path fill="#d8dee9" fill-rule="evenodd" d="M180.778 84L223 126.037l-42.222 42.037l-42.223-42.037z" clip-rule="evenodd" />
+                  <path fill="#77c1d2" fill-rule="evenodd" d="m75.222 84l87.532 87.148H78.31L33 126.037z" clip-rule="evenodd" />
+                </g>
+              </svg>
+              <!-- laravel -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <path
+                    fill="#ff2d20"
+                    fill-rule="evenodd"
+                    d="M215.846 78.314q.097.366.098.747v39.199c0 .503-.131.997-.379 1.432a2.84 2.84 0 0 1-1.037 1.047l-32.446 18.942v37.545a2.87 2.87 0 0 1-1.409 2.48l-67.728 39.535c-.155.089-.324.146-.493.207c-.064.022-.123.061-.19.079a2.8 2.8 0 0 1-1.445 0c-.077-.022-.148-.065-.222-.093c-.155-.057-.317-.107-.465-.193l-67.714-39.535a2.85 2.85 0 0 1-1.036-1.047a2.9 2.9 0 0 1-.38-1.433V59.629q.002-.387.099-.75c.02-.083.07-.158.098-.24c.053-.15.102-.303.18-.443c.053-.093.13-.168.194-.253c.08-.115.155-.233.25-.333c.08-.082.187-.143.278-.214c.102-.086.194-.179.31-.247h.004L76.27 37.382a2.8 2.8 0 0 1 2.819 0l33.859 19.767h.007c.112.072.208.161.31.243c.091.072.193.136.274.215c.099.103.17.221.254.336c.06.085.141.16.19.253c.081.143.127.293.184.443c.028.082.077.157.098.243q.097.367.099.747v73.45l28.214-16.473v-37.55c0-.25.035-.503.099-.742c.025-.086.07-.161.099-.243c.056-.15.105-.304.183-.443c.053-.093.13-.168.19-.254c.085-.114.155-.232.254-.332c.081-.082.183-.143.275-.215c.105-.085.197-.178.31-.246h.004l33.862-19.768a2.79 2.79 0 0 1 2.818 0l33.859 19.768c.12.072.211.16.317.243c.088.071.19.136.271.214c.099.104.169.222.254.336c.063.086.141.16.19.254c.081.14.127.293.183.443c.032.082.078.157.099.243m-5.546 38.292V84.009l-11.849 6.916l-16.369 9.557v32.597l28.221-16.473zm-33.859 58.966v-32.618l-16.101 9.325l-45.979 26.609v32.925zM46.644 64.577v110.995l62.073 36.238v-32.919l-32.428-18.61l-.01-.007l-.015-.007c-.109-.064-.2-.157-.303-.236c-.088-.071-.19-.128-.267-.207l-.007-.01c-.092-.09-.156-.2-.233-.301c-.07-.096-.155-.178-.211-.278l-.004-.011c-.064-.107-.103-.236-.148-.357c-.046-.107-.106-.207-.134-.322v-.004c-.035-.135-.042-.278-.057-.418c-.014-.107-.042-.214-.042-.321V81.051L58.493 71.49l-11.849-6.91zm31.04-21.415L49.474 59.63l28.203 16.466l28.207-16.47l-28.207-16.463zm14.671 102.764l16.366-9.553V64.577l-11.85 6.917l-16.368 9.556v71.797zm86.909-83.332l-28.208 16.467l28.208 16.466l28.203-16.47zm-2.823 37.888l-16.369-9.557l-11.848-6.916v32.597l16.365 9.553l11.852 6.92zm-64.905 73.458l41.373-23.952l20.682-11.968l-28.186-16.456l-32.453 18.946l-29.578 17.267z"
+                    clip-rule="evenodd"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- proyek 1 end-->
+        <!-- proyek 2 -->
+        <div class="bg-gray-800 p-6 rounded-xl shadow-xl project-card relative flex flex-col items-center hover:shadow-blue-500/50 transition-all duration-300" data-aos="fade-up">
+          <a data-fslightbox="gallery" href="src/img/proyek2/movie.png">
+            <img src="src/img/proyek2/movieapp.png" alt="Movie Search App" class="w-sm xl:w-full object-cover rounded-xl cursor-pointer transition duration-300 hover:scale-105" />
+          </a>
+          <a data-fslightbox="gallery" href="src/img/proyek2/favorit.png">
+            <img src="src/img/proyek2/favorit.png" alt="Movie Search App" class="hidden" />
+          </a>
+          <a data-fslightbox="gallery" href="src/img/proyek2/detail.png">
+            <img src="src/img/proyek2/detail.png" alt="Movie Search App" class="hidden" />
+          </a>
+          <div class="text-center mt-4">
+            <h3 class="text-md lg:text-xl text-blue-400 font-semibold">Movie Search App</h3>
+            <p class="text-gray-300 mt-2 text-sm lg:text-lg">Movie Search App memungkinkan pengguna mencari informasi tentang film menggunakan The Movie Database (TMDb) API.</p>
+            <div class="absolute top-4 right-4 flex space-x-3">
+              <a href="https://github.com/anjastabuni/Movie-App" class="text-gray-700 text-2xl hover:text-gray-200">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-row mt-6 justify-center">
+              <!-- tailwind css -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <rect width="256" height="256" rx="60" />
+                  <path
+                    fill="url(#skillIconsTailwindcssLight0)"
+                    fill-rule="evenodd"
+                    d="M83 110q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5Q96.5 92 83 110m-45 54q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5q-18-4.502-31.5 13.5"
+                    clip-rule="evenodd"
+                  />
+                  <defs>
+                    <linearGradient id="skillIconsTailwindcssLight0" x1="86.5" x2="163.5" y1="74" y2="185.5" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#32b1c1" />
+                      <stop offset="1" stop-color="#14c6b7" />
+                    </linearGradient>
+                  </defs>
+                </g>
+              </svg>
+              <!-- express -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <path
+                    fill="#fff"
+                    d="M228 182.937a12.73 12.73 0 0 1-15.791-6.005c-9.063-13.567-19.071-26.522-28.69-39.755l-4.171-5.56c-11.454 15.346-22.908 30.08-33.361 45.371a12.23 12.23 0 0 1-15.012 5.894l42.98-57.659l-39.978-52.1a13.29 13.29 0 0 1 15.847 5.56c9.285 13.568 19.572 26.523 29.802 40.257c10.287-13.623 20.462-26.634 29.97-40.09a11.95 11.95 0 0 1 14.901-5.56l-15.513 20.573c-6.95 9.174-13.789 18.404-21.017 27.356a5.56 5.56 0 0 0 0 8.285c13.289 17.626 26.466 35.307 40.033 53.433M28 124.5c1.168-5.56 1.89-11.621 3.503-17.292c9.619-34.195 48.818-48.43 75.785-27.245c15.791 12.4 19.739 29.97 18.961 49.764H37.286c-1.446 35.363 24.075 56.714 56.713 45.816a33.86 33.86 0 0 0 21.518-23.965c1.724-5.56 4.504-6.505 9.786-4.893a45.15 45.15 0 0 1-21.573 32.972a52.26 52.26 0 0 1-60.884-7.784a54.77 54.77 0 0 1-13.678-32.138c0-1.89-.723-3.781-1.112-5.56A861 861 0 0 1 28 124.5m9.397-2.391h80.456c-.501-25.632-16.681-43.814-38.254-43.98c-24.02-.334-41.201 17.458-42.258 43.869z"
+                  />
+                </g>
+              </svg>
+              <!-- node js -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <path
+                    fill="#81cd39"
+                    d="M119.878 31.116c4.919-2.815 11.325-2.828 16.239 0c24.722 13.97 49.452 27.917 74.17 41.895c4.65 2.619 7.759 7.793 7.712 13.15v84.045c.035 5.579-3.382 10.877-8.287 13.436c-24.641 13.893-49.27 27.802-73.907 41.695c-5.019 2.87-11.554 2.649-16.418-.457c-7.387-4.282-14.787-8.544-22.175-12.822c-1.51-.9-3.212-1.616-4.278-3.08c.943-1.27 2.628-1.428 3.997-1.983c3.083-.981 5.916-2.555 8.748-4.082c.717-.49 1.591-.302 2.278.136c6.317 3.622 12.579 7.35 18.917 10.937c1.352.781 2.721-.256 3.877-.9c24.18-13.667 48.39-27.281 72.567-40.952c.896-.431 1.391-1.382 1.318-2.363c.017-27.725.004-55.454.009-83.18c.102-1.112-.542-2.136-1.549-2.592c-24.555-13.829-49.099-27.678-73.65-41.51a2.56 2.56 0 0 0-2.892-.005c-24.552 13.837-49.09 27.7-73.642 41.527c-1.003.457-1.676 1.464-1.557 2.58c.005 27.726 0 55.455 0 83.184a2.35 2.35 0 0 0 1.336 2.334c6.551 3.715 13.111 7.404 19.667 11.107c3.694 1.987 8.228 3.169 12.298 1.646c3.59-1.288 6.107-4.953 6.039-8.765c.034-27.563-.017-55.13.025-82.69c-.09-1.223 1.071-2.234 2.261-2.118c3.148-.022 6.3-.043 9.448.008c1.314-.03 2.218 1.288 2.056 2.52c-.013 27.738.034 55.476-.021 83.213c.008 7.393-3.029 15.437-9.867 19.054c-8.423 4.363-18.835 3.438-27.157-.746c-7.204-3.596-14.08-7.84-21.156-11.692c-4.918-2.545-8.318-7.864-8.283-13.439V86.161c-.052-5.468 3.182-10.736 7.975-13.317c24.637-13.903 49.27-27.818 73.902-41.728"
+                  />
+                  <path
+                    fill="#81cd39"
+                    d="M141.372 89.335c10.745-.692 22.248-.41 31.917 4.884c7.487 4.056 11.637 12.57 11.769 20.887c-.209 1.121-1.382 1.74-2.453 1.663c-3.117-.004-6.236.043-9.353-.021c-1.323.051-2.091-1.168-2.257-2.337c-.896-3.98-3.067-7.921-6.812-9.841c-5.75-2.878-12.416-2.733-18.686-2.673c-4.577.242-9.499.639-13.377 3.33c-2.977 2.039-3.881 6.155-2.819 9.47c1.002 2.38 3.749 3.148 5.998 3.856c12.949 3.387 26.671 3.049 39.373 7.506c5.259 1.817 10.403 5.35 12.203 10.856c2.355 7.38 1.323 16.2-3.928 22.124c-4.258 4.875-10.459 7.529-16.644 8.97c-8.228 1.835-16.767 1.882-25.123 1.067c-7.857-.896-16.034-2.96-22.099-8.313c-5.187-4.504-7.72-11.522-7.469-18.294c.06-1.144 1.199-1.942 2.295-1.848c3.139-.025 6.279-.034 9.418.005c1.255-.09 2.184.994 2.249 2.176c.578 3.791 2.003 7.771 5.31 10.018c6.38 4.117 14.387 3.835 21.693 3.95c6.053-.268 12.848-.349 17.787-4.35c2.606-2.282 3.378-6.1 2.674-9.384c-.763-2.773-3.664-4.065-6.155-4.91c-12.783-4.043-26.659-2.576-39.318-7.149c-5.14-1.816-10.11-5.25-12.084-10.53c-2.755-7.473-1.493-16.717 4.308-22.44c5.656-5.695 13.82-7.888 21.583-8.672"
+                  />
+                </g>
+              </svg>
+              <!-- mongodb -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <path
+                    fill="#10aa50"
+                    d="M171.173 107.591c-10.537-46.481-32.497-58.855-38.099-67.602A99 99 0 0 1 126.949 28c-.296 4.13-.84 6.73-4.35 9.862c-7.047 6.283-36.977 30.673-39.496 83.486c-2.347 49.242 36.2 79.605 41.292 82.744c3.916 1.927 8.685.041 11.012-1.728c18.581-12.752 43.969-46.75 35.786-94.773"
+                  />
+                  <path fill="#b8c4c2" d="M128.545 177.871c-.97 12.188-1.665 19.27-4.129 26.235c0 0 1.617 11.603 2.753 23.894h4.019a224 224 0 0 1 4.384-25.732c-5.203-2.56-6.827-13.702-7.027-24.397" />
+                  <path
+                    fill="#12924f"
+                    d="M135.565 202.275c-5.258-2.429-6.779-13.806-7.013-24.404a500 500 0 0 0 1.136-52.545c-.276-9.194.13-85.158-2.265-96.28a92 92 0 0 0 5.651 10.936c5.602 8.754 27.569 21.128 38.099 67.609c8.203 47.941-17.047 81.849-35.608 94.684"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- proyek 2 end-->
+        <!-- proyek 3 -->
+        <div class="bg-gray-800 p-6 rounded-xl shadow-xl project-card relative flex flex-col items-center hover:shadow-blue-500/50 transition-all duration-300" data-aos="fade-up">
+          <a data-fslightbox="gallery" href="src/img/proyek3/portfolio.jpg">
+            <img src="src/img/proyek3/portfolio.jpg" alt="Portfolio Rebly Megib Tabuni" class="w-sm xl:w-full object-cover rounded-md cursor-pointer transition duration-300 hover:scale-105" />
+          </a>
+          <a data-fslightbox="gallery" href="src/img/proyek3/detail.png">
+            <img src="src/img/proyek3/detail.png" alt="Portfolio Rebly Megib Tabuni" class="w-full h-45 object-cover rounded-xl hidden" />
+          </a>
+          <div class="text-center mt-4">
+            <h3 class="text-md lg:text-xl text-blue-400 font-semibold">Web Portfolio</h3>
+            <p class="text-gray-300 mt-2 text-sm lg:text-lg">Website portofolio interaktif dengan desain futuristik yang menampilkan pengalaman dan proyek yang telah saya kerjakan.</p>
+            <div class="absolute top-4 right-4 flex space-x-3">
+              <a href="https://github.com/anjastabuni/sacode-e-commerse-ii-day11-anjas" class="text-gray-700 text-2xl hover:text-gray-200">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://github.com/anjastabuni/anjastabuni.github.io" class="text-gray-700 text-2xl hover:text-gray-200">
+                <i class="fa-solid fa-link"></i>
+              </a>
+            </div>
+            <div class="flex flex-row mt-6 justify-center">
+              <!-- tailwind css -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <rect width="256" height="256" rx="60" />
+                  <path
+                    fill="url(#skillIconsTailwindcssLight0)"
+                    fill-rule="evenodd"
+                    d="M83 110q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5Q96.5 92 83 110m-45 54q9-36 45-36c36 0 40.5 27 58.5 31.5q18 4.502 31.5-13.5q-9 36-45 36c-36 0-40.5-27-58.5-31.5q-18-4.502-31.5 13.5"
+                    clip-rule="evenodd"
+                  />
+                  <defs>
+                    <linearGradient id="skillIconsTailwindcssLight0" x1="86.5" x2="163.5" y1="74" y2="185.5" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#32b1c1" />
+                      <stop offset="1" stop-color="#14c6b7" />
+                    </linearGradient>
+                  </defs>
+                </g>
+              </svg>
+              <!-- javascript -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <rect width="256" height="256" fill="#f0db4f" rx="60" />
+                  <path
+                    fill="#323330"
+                    d="m67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371c7.905 0 12.889-3.092 12.889-15.12v-81.798h24.058v82.138c0 24.917-14.606 36.259-35.916 36.259c-19.245 0-30.416-9.967-36.087-21.996m85.07-2.576l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607c9.969 0 16.325-4.984 16.325-11.858c0-8.248-6.53-11.17-17.528-15.98l-6.013-2.579c-17.357-7.388-28.871-16.668-28.871-36.258c0-18.044 13.748-31.792 35.229-31.792c15.294 0 26.292 5.328 34.196 19.247l-18.731 12.029c-4.125-7.389-8.591-10.31-15.465-10.31c-7.046 0-11.514 4.468-11.514 10.31c0 7.217 4.468 10.139 14.778 14.608l6.014 2.577c20.449 8.765 31.963 17.699 31.963 37.804c0 21.654-17.012 33.51-39.867 33.51c-22.339 0-36.774-10.654-43.819-24.574"
+                  />
+                </g>
+              </svg>
+              <!-- css -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 256 256" class="bg-gray-900 rounded-xl mx-1">
+                <g fill="none">
+                  <rect width="256" height="256" fill="#0277bd" rx="60" />
+                  <path fill="#ebebeb" d="m53.753 102.651l2.862 31.942h71.481v-31.942zM128.095 38H48l2.904 31.942h77.191zm0 180.841v-33.233l-.14.037l-35.574-9.605l-2.274-25.476H58.042l4.475 50.154l65.431 18.164z" />
+                  <path fill="#fff" d="m167.318 134.593l-3.708 41.426l-35.625 9.616v33.231l65.483-18.148l.48-5.397l7.506-84.092l.779-8.578L208 38h-80.015v31.942h45.009l-2.906 32.709h-42.103v31.942z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- proyek 3 end-->
+      </div>
+    </section>
+    <!-- Proyek Section End -->
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 mt-20 py-6">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+        <!-- Copyright -->
+        <div class="text-center md:text-left">&copy;<span id="year"></span> Dibuat oleh Rebly Megib Tabuni</div>
+
+        <!-- Sosial Media -->
+        <div class="flex justify-center space-x-4">
+          <a href="https://www.linkedin.com/in/reblytabuni22/" target="_blank" class="text-gray-400 text-2xl hover:text-blue-400 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-linkedin text-lg lg:text-2xl"></i>
+          </a>
+          <a href="https://www.instagram.com/lingge_gaya/" target="_blank" class="text-gray-400 text-2xl hover:text-pink-400 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-instagram text-lg lg:text-2xl"></i>
+          </a>
+          <a href="https://github.com/anjastabuni" target="_blank" class="text-gray-400 text-2xl hover:text-gray-300 p-2 rounded-full shadow-lg transition-transform transform hover:scale-110">
+            <i class="fab fa-github text-lg lg:text-2xl"></i>
+          </a>
+        </div>
+
+        <!-- Scroll to Top -->
+        <button id="scrollTop" class="fixed bottom-5 right-5 bg-blue-500 text-white p-3 rounded-full shadow-md transition transform hover:scale-110 hover:bg-blue-600 opacity-0 invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+
+      // year footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Fslightbox.js -->
+    <script src="src/js/fslightbox.js"></script>
+    <!-- Scoll to Top -->
+    <script src="src/js/scrollTop.js"></script>
+  </body>
+</html>
